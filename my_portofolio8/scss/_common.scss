@@ -1,0 +1,205 @@
+// メディアクエリ-----------------------------------
+$breakpoints: (
+  //キー　　値
+  "s": "screen and (max-width: 699px)",
+  "m": "(min-width: 700px) and (max-width: 899px)",
+  "l": "(min-width: 900px) and (max-width: 1279px)",
+  "xl": "screen and (min-width: 1280px)"
+) !default;
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// title------------------------------------------------------
+.title {
+  &-jp {
+    display: block;
+    font-family: Noto Sans JP;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #159741;
+    margin-bottom: 12px;
+    @include mq(m) {
+      font-size: 15px;
+      line-height: 22px;
+    }
+    @include mq(l) {
+      font-size: 18px;
+      line-height: 26px;
+      margin-bottom: 16px;
+    }
+    @include mq(xl) {
+      font-size: 18px;
+      line-height: 26px;
+      margin-bottom: 16px;
+    }
+  }
+  &-en {
+    font-family: reross-quadratic, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38px;
+    letter-spacing: 0.05em;
+    text-indent: 0.05em;
+    text-align: center;
+    color: #333333;
+    position: relative;
+    @include mq(m) {
+      font-size: 40px;
+      line-height: 46px;
+    }
+    @include mq(l) {
+      font-size: 48px;
+      line-height: 58px;
+    }
+    @include mq(xl) {
+      font-size: 48px;
+      line-height: 58px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translate(-50%, 100%);
+      width: 50px;
+      height: 2px;
+      background-color: #159741;
+      @include mq(l) {
+        bottom: -16px;
+      }
+      @include mq(xl) {
+        bottom: -16px;
+      }
+    }
+  }
+}
+
+.menu {
+  .title-jp {
+    color: #ffffff;
+  }
+  .title-en {
+    color: #ffffff;
+    &::after {
+      background-color: #fff;
+    }
+  }
+}
+
+.shop {
+  .title {
+    @include mq(l) {
+      &-jp {
+        margin-bottom: 16.33px;
+        line-height: 24.92px;
+      }
+      &-en {
+        line-height: 55.81px;
+      }
+    }
+    @include mq(xl) {
+      &-jp {
+        margin-bottom: 16.33px;
+        line-height: 24.92px;
+      }
+      &-en {
+        line-height: 55.81px;
+      }
+    }
+  }
+}
+
+.contact{
+  .title{
+    &-en{
+      @include mq(l) {
+        &::after{
+          bottom: -7px;
+        }
+      }
+      @include mq(xl) {
+        &::after{
+          bottom: -7px;
+        }
+      }
+    }
+  }
+}
+
+// no-scroll--------------------------------------------------
+.no-scroll{
+  overflow: hidden;
+}
+
+// only-s-m--------------------------------------------------
+.only-s{
+  @include mq(m) {
+    display: none;
+  }
+  @include mq(l) {
+    display: none;
+  }
+  @include mq(xl) {
+    display: none;
+  }
+}
+
+.only-s-m {
+  @include mq(l) {
+    display: none;
+  }
+  @include mq(xl) {
+    display: none;
+  }
+}
+
+.only-l-xl {
+  display: none;
+  @include mq(l) {
+    display: block;
+  }
+  @include mq(xl) {
+    display: block;
+  }
+}
+
+.only-m-l-xl{
+  display: none;
+  @include mq(m) {
+    display: block;
+  }
+  @include mq(l) {
+    display: block;
+  }
+  @include mq(xl) {
+    display: block;
+  }
+}
+
+.only-s-l{
+  @include mq(m) {
+    display: none;
+  }
+  @include mq(xl) {
+    display: none;
+  }
+}
+.only-l{
+display: none;
+@include mq(m) {
+  display: none;
+}
+@include mq(l) {
+  display: block;
+}
+@include mq(xl) {
+  display: none;
+}
+}
